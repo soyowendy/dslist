@@ -1,6 +1,7 @@
 package com.wendy.dslist.dto;
 
 import com.wendy.dslist.entities.Game;
+import org.springframework.beans.BeanUtils;
 
 public class GameDTO {
 	private Long id;
@@ -30,15 +31,7 @@ public class GameDTO {
 	}
 
 	public GameDTO(Game game) {
-		id = game.getId();
-		title = game.getTitle();
-		year = game.getYear();
-		genre = game.getGenre();
-		platforms = game.getPlatforms();
-		score = game.getScore();
-		imgUrl = game.getImgUrl();
-		shortDescription = game.getShortDescription();
-		longDescription = game.getLongDescription();
+		BeanUtils.copyProperties(game, this);
 	}
 
 	public Long getId() {
