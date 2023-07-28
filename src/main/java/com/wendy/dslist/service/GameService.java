@@ -29,4 +29,9 @@ public class GameService {
 		return game.map(GameDTO::new).orElse(null);
 
 	}
+
+	@Transactional(readOnly = true)
+	public List<GameMinDTO> findByList(Long listId) {
+		return gameRepository.searchByList(listId).stream().map(GameMinDTO::new).collect(Collectors.toList());
+	}
 }
